@@ -21,11 +21,9 @@ return new class extends Migration
             $table->foreign('profile_id')->references('id')->on('profiles')->onDelete('cascade');
             $table->foreign('serie_id')->references('id')->on('series')->onDelete('cascade');
 
-            // Clave primaria compuesta para evitar duplicados de la misma relación
-            $table->primary(['profile_id', 'serie_id']);
+          
             $table->timestamps();
         });
-       
     }
 
     /**

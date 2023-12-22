@@ -5,10 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class RateSerie extends Model
+class RateMovie extends Model
 {
     use HasFactory;
-
     protected $fillable = [
         'profile_id',
         'movie_id',
@@ -16,4 +15,5 @@ class RateSerie extends Model
         'comment',
         'rate',
     ];
+    
 }

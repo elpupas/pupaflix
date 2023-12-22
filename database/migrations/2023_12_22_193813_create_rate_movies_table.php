@@ -22,7 +22,7 @@ return new class extends Migration
             $table->foreign('movie_id')->references('id')->on('movies')->onDelete('cascade');
 
             // Clave primaria compuesta para evitar duplicados de la misma relación
-            $table->primary(['profile_id', 'movie_id']);
+           
             $table->timestamps();
         });
     }
