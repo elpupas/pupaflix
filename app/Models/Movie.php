@@ -23,7 +23,20 @@ class Movie extends Model
         return $this->belongsToMany(Category::class);
     }
 
+    public function ratemovies(){
+        return $this->belongsToMany(Profile::class)->using(RateMovie::class)->withPivot([ 'profile_id',
+        'movie_id',
+        'like',
+        'comment',
+        'rate',]);
+    }
+
+    public function profile_has_movie(){
+        return $this->belongsToMany(Profile::class);
+    }
+
     public function admin(){
         return $this->belongsTo(Admin::class);
     }
+
 }
