@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('name',70);
             $table->foreignId('user_id');
-            $table->string('profile-picture',1000);
+            $table->string('profile-picture',1000)->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
