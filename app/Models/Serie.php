@@ -19,6 +19,9 @@ class Serie extends Model
         'admin_id',
     ];
 
+    public function serie_has_profile(){
+        return $this->belongsToMany(Profile::class);
+    }
     public function admin(){
         return $this->belongsTo(Admin::class);
     }
