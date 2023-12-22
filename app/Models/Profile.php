@@ -18,4 +18,19 @@ class Profile extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    public function movies_has_profile(){
+        return $this->belongsToMany(Movie::class);
+    }
+    public function series_has_profile(){
+        return $this->belongsToMany(Serie::class);
+    }
+
+    public function ratemovies(){
+        return $this->belongsToMany(Movie::class)->using(RateMovie::class)->withPivot([ 'profile_id',
+        'movie_id',
+        'like',
+        'comment',
+        'rate',]);
+    }
 }

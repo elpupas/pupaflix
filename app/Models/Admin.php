@@ -17,6 +17,9 @@ class Admin extends Model
     public function series(){
         return $this->hasMany(Serie::class);
     }
+    public function movies(){
+        return $this->hasMany(Admin::class);
+    }
     public function user(){
         return $this->belongsTo(User::class);
     }
