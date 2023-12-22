@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ratemovie extends Model
 {
     use HasFactory;
+    
     protected $fillable = [
         'profile_id',
         'movie_id',
