@@ -19,10 +19,10 @@ class Profile extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function movies_has_profile(){
-        return $this->belongsToMany(Movie::class);
+    public function movies_has_profiles(){
+        return $this->belongsToMany(Movie::class, 'profiles_has_movies', 'movie_id', 'profile_id');
     }
-    public function series_has_profile(){
+    public function series_has_profiles(){
         return $this->belongsToMany(Serie::class);
     }
 

@@ -13,13 +13,15 @@ return new class extends Migration
     {
         Schema::create('series', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('profile_id');
-            $table->unsignedBigInteger('serie_id');
-            $table->tinyInteger('like')->nullable();
-            $table->string('comment')->nullable();
-            $table->enum('rate', ['1', '2', '3', '4', '5'])->nullable();
-            $table->foreign('profile_id')->references('id')->on('profiles')->onDelete('cascade');
-            $table->foreign('serie_id')->references('id')->on('series')->onDelete('cascade');
+            $table->unsignedBigInteger('admin_id');
+            $table->string('name',90);
+            $table->string('director',90);
+            $table->string('covert_art',1000);
+            $table->string('serie_url',1000);
+            $table->year('year');
+            $table->time('duration');
+            $table->string('sinopsis')->nullable();
+            $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
 
             // Clave primaria compuesta para evitar duplicados de la misma relación
            

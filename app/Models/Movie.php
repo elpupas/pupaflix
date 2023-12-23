@@ -19,7 +19,7 @@ class Movie extends Model
     ];
 
     public function categories(){
-        return $this->belongsToMany(Category::class);
+        return $this->belongsToMany(Category::class, 'movie_has_categories', 'movie_id', 'category_id');
     }
 
     public function ratemovies(){
@@ -31,7 +31,7 @@ class Movie extends Model
     }
 
     public function profile_has_movie(){
-        return $this->belongsToMany(Profile::class);
+        return $this->belongsToMany(Profile::class,'profiles_has_movies', 'movie_id', 'profile_id');
     }
 
     public function admin(){

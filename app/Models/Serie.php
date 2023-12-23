@@ -20,7 +20,7 @@ class Serie extends Model
     ];
 
     public function serie_has_profile(){
-        return $this->belongsToMany(Profile::class);
+        return $this->belongsToMany(Profile::class,'profiles_has_series', 'serie_id', 'profile_id');
     }
     public function admin(){
         return $this->belongsTo(Admin::class);

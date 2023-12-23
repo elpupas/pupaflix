@@ -19,7 +19,7 @@ use Laravel\Socialite\Facades\Socialite;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/login-google', function () {
+/* Route::get('/login-google', function () {
     return Socialite::driver('google')->redirect();
 });
  
@@ -28,4 +28,4 @@ Route::get('/auth/{provider}/callback', function () {
     dd($user);
  
     // $user->token
-});
+}); */

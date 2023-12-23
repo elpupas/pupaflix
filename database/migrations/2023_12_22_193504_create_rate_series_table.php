@@ -12,7 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('rate_series', function (Blueprint $table) {
-            $table->id();
             $table->unsignedBigInteger('profile_id');
             $table->unsignedBigInteger('serie_id');
             $table->tinyInteger('like')->nullable();

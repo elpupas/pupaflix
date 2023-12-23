@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('rate_movies', function (Blueprint $table) {
-            $table->id();
+            
             $table->unsignedBigInteger('profile_id');
             $table->unsignedBigInteger('movie_id');
             $table->tinyInteger('like')->nullable();

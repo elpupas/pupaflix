@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\RegisterController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -8,10 +9,4 @@ use Laravel\Socialite\Facades\Socialite;
 
 
 
-
-Route::get('/login-google/{provider}',function(){
-    return Socialite::driver('google')->stateless()->redirect();
-} );
-
- 
-Route::get('/auth/{provider}/callback',[AuthController::class,'handleGoogleCallback']);
+Route::post('/register',[RegisterController::class,'store']);
