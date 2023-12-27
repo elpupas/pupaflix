@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class RateMovie extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'profile_id',
         'movie_id',
@@ -15,5 +16,4 @@ class RateMovie extends Model
         'comment',
         'rate',
     ];
-    
 }

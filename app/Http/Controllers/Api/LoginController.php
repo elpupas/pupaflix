@@ -3,63 +3,51 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\LoginRequest;
+use App\Services\LoginService;
+use Dotenv\Exception\ValidationException;
 
 class LoginController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    protected $loginService;
+
+    public function __construct(LoginService $loginService)
     {
-        //
+
+        $this->loginService = $loginService;
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function login(LoginRequest $request)
     {
-        //
+        try {
+            $userData = $request;
+            $user = $this->loginService->attempLogin($userData);
+
+            if (isset($user['token'])) {
+
+                return response()->json(['message' => 'Usuario loguedo ', 'name' => $user['name'], 'user_id' => $user['user_id'], 'token' => $user['token']], 200);
+
+            }
+
+        } catch (ValidationException $login) {
+
+            return response()->json(['error' => $login->getMessage()], $login->getCode());
+
+        }
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function logout()
     {
-        //
-    }
+        try {
+            $this->loginService->invalidateSessionToken();
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+            return response()->json(['message' => 'Usuario loueado'], 200);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+        } catch (ValidationException) {
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+        }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }

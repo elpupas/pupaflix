@@ -3,50 +3,58 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\UpdateUserRequest;
+use App\Http\Resources\UserShowResource;
+use App\Services\User\UserService;
+use Illuminate\Validation\ValidationException;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    private $userService;
+
+    public function __construct(UserService $userService)
     {
-        //
+        $this->userService = $userService;
     }
 
- 
-    public function storeAddress(Request $request, $id)
+    public function show($id)
     {
-        //
+        try {
+            $user = $this->userService->getUserById($id);
+
+            return response()->json([new UserShowResource($user)], 200);
+
+        } catch (ValidationException $e) {
+            return response()->json(['error' => $e->getMessage()], $e->getCode());
+        }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function update(UpdateUserRequest $request, $id)
     {
-        //
-    }
+        try {
+            $user = $this->userService->updateUserDetails($request, $id);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
- 
+            return response()->json(['message' => 'Datos actualizados', 'Datos' => $user], 200);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
+        } catch (ValidationException $f) {
+            return response()->json(['error' => $f->getMessage()], $f->getCode());
+
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        try {
+            $this->userService->deleteUser($id);
+
+            return response()->json(['message' => 'Usuario Eliminado'], 200);
+
+        } catch (ValidationException $f) {
+            return response()->json(['error' => $f->getMessage()], $f->getCode());
+
+        }
     }
 }

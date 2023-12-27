@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('profiles_has_movies', function (Blueprint $table) {
-            
+
             $table->foreignId('profile_id')->constrained()->onDelete('cascade');
             $table->foreignId('movie_id')->constrained()->onDelete('cascade');
             $table->timestamps();

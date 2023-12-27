@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('rate_movies', function (Blueprint $table) {
-            
+
             $table->unsignedBigInteger('profile_id');
             $table->unsignedBigInteger('movie_id');
             $table->tinyInteger('like')->nullable();
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->foreign('movie_id')->references('id')->on('movies')->onDelete('cascade');
 
             // Clave primaria compuesta para evitar duplicados de la misma relación
-           
+
             $table->timestamps();
         });
     }

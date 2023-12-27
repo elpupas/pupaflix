@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('movies', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('admin_id');
-            $table->string('name',90);
-            $table->string('director',90);
-            $table->string('covert_art',1000);
-            $table->string('movie_url',1000);
+            $table->string('name', 90);
+            $table->string('director', 90);
+            $table->string('covert_art', 1000);
+            $table->string('movie_url', 1000);
 
             $table->year('year');
             $table->time('duration');

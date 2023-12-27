@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('country', 100);
             $table->foreignId('user_id');
-            $table->string('city',100);
+            $table->string('city', 100);
             $table->string('street', 100);
-            $table->string('zipcode',11);
+            $table->string('zipcode', 11);
             $table->string('floor');
-            $table->string('door',20);
+            $table->string('door', 20);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });

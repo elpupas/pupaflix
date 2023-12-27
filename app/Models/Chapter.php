@@ -16,7 +16,8 @@ class Chapter extends Model
         'season_id',
     ];
 
-    public function season(){
+    public function season()
+    {
         return $this->belongsTo(Season::class);
     }
 }
