@@ -3,6 +3,7 @@
 namespace App\Services\User;
 
 use App\Contracts\User\UserProfileService;
+use App\Contracts\User\UserRepositoryInterface;
 use App\Models\User;
 use App\Repositories\EloquentUserRepository;
 use Illuminate\Http\Exceptions\HttpResponseException;
@@ -13,7 +14,7 @@ class UserService implements UserProfileService
 {
     protected $userRepository;
 
-    public function __construct(EloquentUserRepository $userRepository)
+    public function __construct(UserRepositoryInterface $userRepository)
     {
         $this->userRepository = $userRepository;
     }

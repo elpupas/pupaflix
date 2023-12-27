@@ -8,3 +8,5 @@ Principio de I (Interface Segregation Principle):
 La implementación de interfaces para los servicios define contratos claros. Cada servicio implementa solo los métodos necesarios definidos en la interfaz, lo que garantiza que estén orientados a una función específica.
 
 Al seguir estas prácticas, tu código se vuelve más modular
+
+En el construct que pasado por parametro el UserRepositoryInterface para utilizar el principio DIP, para no depender una based e datoa concreta, solo tengo que cambiar en mi appserviceprovider el metodo register

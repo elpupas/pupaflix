@@ -48,9 +48,9 @@ class EloquentUserRepository implements UserRepositoryInterface
         $updatedStudent = DB::transaction(function () use ($request, $user) {
             $user->name = $request['name'];
             $user->email = $request['email'];
-            $user->save(); // Guarda los cambios en el usuario
+            $user->save(); 
 
-            // Actualiza la dirección del usuario si existe
+    
             if ($user->adreesses) {
                 $user->adreesses->country = $request['country'];
                 $user->adreesses->city = $request['city'];
