@@ -12,7 +12,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles, Billable;
+    use Billable, HasApiTokens, HasFactory, HasRoles, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -45,15 +45,18 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function profiles(){
+    public function profiles()
+    {
         return $this->hasMany(Profile::class);
     }
 
-    public function adreesses(){
-        return $this->hasMany(Address::class);
+    public function adreesses()
+    {
+        return $this->hasOne(Address::class);
     }
 
-    public function admin(){
+    public function admin()
+    {
         return $this->hasOne(Admin::class);
     }
 }

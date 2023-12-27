@@ -12,7 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('rate_series', function (Blueprint $table) {
-            $table->id();
             $table->unsignedBigInteger('profile_id');
             $table->unsignedBigInteger('serie_id');
             $table->tinyInteger('like')->nullable();
@@ -21,7 +20,6 @@ return new class extends Migration
             $table->foreign('profile_id')->references('id')->on('profiles')->onDelete('cascade');
             $table->foreign('serie_id')->references('id')->on('series')->onDelete('cascade');
 
-          
             $table->timestamps();
         });
     }

@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('seasons', function (Blueprint $table) {
             $table->id();
-            $table->string('season',90);
-            $table->string('cover-art',1000)->nullable();
+            $table->string('season', 90);
+            $table->string('cover-art', 1000)->nullable();
             $table->foreignId('serie_id');
             $table->foreign('serie_id')->references('id')->on('series')->onDelete('cascade')->onUpdate('cascade');
 

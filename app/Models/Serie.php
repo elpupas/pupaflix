@@ -19,14 +19,18 @@ class Serie extends Model
         'admin_id',
     ];
 
-    public function serie_has_profile(){
-        return $this->belongsToMany(Profile::class);
+    public function serie_has_profile()
+    {
+        return $this->belongsToMany(Profile::class, 'profiles_has_series', 'serie_id', 'profile_id');
     }
-    public function admin(){
+
+    public function admin()
+    {
         return $this->belongsTo(Admin::class);
     }
 
-    public function seasons(){
+    public function seasons()
+    {
         return $this->hasMany(Season::class);
     }
 }

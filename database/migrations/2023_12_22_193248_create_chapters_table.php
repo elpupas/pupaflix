@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('chapters', function (Blueprint $table) {
             $table->id();
-            $table->string('name',100);
-            $table->string('description',250)->nullable();
-            $table->string('image',1000)->nullable();
+            $table->string('name', 100);
+            $table->string('description', 250)->nullable();
+            $table->string('image', 1000)->nullable();
             $table->foreignId('season_id');
             $table->foreign('season_id')->references('id')->on('seasons')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

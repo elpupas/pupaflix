@@ -1,0 +1,18 @@
+En el handler para manejar la redireccion en web tradicionales, 
+primero voy a app\Http\Middleware\Authenticate.php y declaro null la redireccion
+luego creo un metodo 
+
+
+protected function unauthenticated($request, AuthenticationException $exception) {
+        return response()->json(['error' => 'Usuario no autenticado.'], 401);
+
+
+    }
+
+    protected function unauthenticated($request, AuthenticationException $exception): JsonResponse: Este método se encarga de manejar las excepciones de autenticación. Recibe dos parámetros:
+
+$request: El objeto de solicitud HTTP actual.
+$exception: La excepción de autenticación que se ha producido.
+return response()->json(['error' => 'No autenticado.'], 401);: Esta línea devuelve una respuesta JSON con un mensaje de error indicando que el usuario no está autenticado. 
+
+De esta manera cuando se intente acceder a una ruta sin el token, lance el mensaje de error y cubro esa falla en seguridad de mostrar parte de la estrucutura de carpeta

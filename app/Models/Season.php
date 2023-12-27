@@ -15,10 +15,13 @@ class Season extends Model
         'serie_id',
     ];
 
-    public function chapters(){
+    public function chapters()
+    {
         return $this->hasMany(Chapter::class);
     }
-    public function serie(){
+
+    public function serie()
+    {
         return $this->belongsTo(Serie::class);
     }
 }

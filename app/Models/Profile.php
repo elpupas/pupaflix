@@ -12,25 +12,30 @@ class Profile extends Model
     protected $fillable = [
         'user_id',
         'name',
-        'profile-picture'
+        'profile-picture',
     ];
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function movies_has_profile(){
-        return $this->belongsToMany(Movie::class);
+    public function movies_has_profiles()
+    {
+        return $this->belongsToMany(Movie::class, 'profiles_has_movies', 'movie_id', 'profile_id');
     }
-    public function series_has_profile(){
+
+    public function series_has_profiles()
+    {
         return $this->belongsToMany(Serie::class);
     }
 
-    public function ratemovies(){
-        return $this->belongsToMany(Movie::class)->using(RateMovie::class)->withPivot([ 'profile_id',
-        'movie_id',
-        'like',
-        'comment',
-        'rate',]);
+    public function ratemovies()
+    {
+        return $this->belongsToMany(Movie::class)->using(RateMovie::class)->withPivot(['profile_id',
+            'movie_id',
+            'like',
+            'comment',
+            'rate', ]);
     }
 }
